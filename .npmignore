@@ -1,0 +1,8 @@
+.DS_Store
+docs/*
+.env.json
+__tests__
+flow-typed/*
+.flowconfig
+.travis.yml
+.nvmrc
