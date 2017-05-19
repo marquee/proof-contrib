@@ -1,6 +1,6 @@
 {
   "name": "proof-contrib",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "./index.js",
   "dependencies": {
     "css": "^2.2.1",
