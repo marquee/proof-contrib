@@ -11,7 +11,7 @@ const UglifyJS  = require('uglify-js')
 const RawScript = (props/*: { source: string } */) => {
     let script_str = props.source
     if ('production' === process.env.NODE_ENV) {
-        script_str = UglifyJS.minify(script_str, { fromString: true }).code
+        script_str = UglifyJS.minify(script_str).code
     }
     return React.createElement('script', {
         dangerouslySetInnerHTML: {

@@ -130,9 +130,7 @@ module.exports = React.createClass({
     css_source = styles.join('');
     eq_script = "(function(window){\n    var _query_data = " + (JSON.stringify(parseCSS(css_source), null, 4)) + ";\n    " + element_query_engine + "\n})(window);";
     if (process.env.NODE_ENV === 'production') {
-      eq_script = optimizeJS(UglifyJS.minify(eq_script, {
-        fromString: true
-      }).code);
+      eq_script = optimizeJS(UglifyJS.minify(eq_script).code);
     }
     return React.createElement("script", {
       "dangerouslySetInnerHTML": {
