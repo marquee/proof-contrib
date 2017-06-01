@@ -10,6 +10,7 @@ module.exports = React.createClass({
   propTypes: {
     columns: React.PropTypes.oneOf([1, 2, 3, 4]).isRequired,
     double_first: React.PropTypes.bool,
+    double_last: React.PropTypes.bool,
     id: React.PropTypes.string,
     respond_to_viewport: React.PropTypes.bool,
     vary: React.PropTypes.bool
@@ -18,6 +19,7 @@ module.exports = React.createClass({
     return {
       columns: 3,
       double_first: false,
+      double_last: false,
       respond_to_viewport: false,
       vary: true
     };
@@ -27,6 +29,7 @@ module.exports = React.createClass({
     cx = new Classes('CardGrid__', this.props.className);
     cx.set('columns', this.props.columns);
     cx.add('double_first', this.props.double_first);
+    cx.add('double_last', this.props.double_last);
     cx.add('vary', this.props.vary);
     cx.add('respond_to_viewport', this.props.respond_to_viewport);
     items = this.props.children || this.props.items;
