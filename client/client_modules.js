@@ -30,14 +30,13 @@ const module_set            = {}
 window.MODULE_SET = module_set
 
 function register (module_name, module_) {
-    console.log('register', module_name, module_)
     if (null != module_set[module_name]) {
         throw new Error(`Module '${ module_name }' already registered`)
     }
     module_set[module_name] = module_
 }
 
-function activate () {
+function activate (reactivating=false) {
     const modules_to_activate = window[DATA_PAYLOAD_NAME]
     if (null == modules_to_activate) {
         return
@@ -46,7 +45,10 @@ function activate () {
         if (null == module_set[module_name]) {
             throw new Error(`No module registered for '${ module_name }'`)
         }
-        console.info(`Activating module ${ module_name }…`)
+        if (reactivating && !module_set[module_name].safe_to_reactivate) {
+            return
+        }
+        console.info(`${ reactivating ? 'Reactivating' : 'Activating' } module ${ module_name }…`)
         const ModuleToActivate = module_set[module_name]
         if (null != ModuleToActivate.activate) {
             ModuleToActivate.activate(...modules_to_activate[module_name])
@@ -59,5 +61,6 @@ function activate () {
 
 module.exports = {
     activate    : activate,
+    reactivate  : function () { activate(true) },
     register    : register,
 }
