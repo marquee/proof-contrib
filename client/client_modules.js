@@ -39,6 +39,7 @@ function register (module_name, module_) {
 function activate (reactivating=false) {
     const modules_to_activate = window[DATA_PAYLOAD_NAME]
     if (null == modules_to_activate) {
+        console.warn('No modules to activate? Did you make sure to put <ClientModules> before the <Asset>?')
         return
     }
     Object.keys(modules_to_activate).forEach( module_name => {
