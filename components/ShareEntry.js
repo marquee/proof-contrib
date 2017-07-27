@@ -3,8 +3,6 @@ var Classes, EMAIL, FACEBOOK, HORIZONTAL, ICONS, LINKEDIN, PINTEREST, POCKET, Re
 
 React = require('react');
 
-UglifyJS = require('uglify-js');
-
 Classes = require('shiny').Classes;
 
 num_instances = 0;
@@ -212,7 +210,7 @@ module.exports = React.createClass({
           "className": '_Label'
         }, SERVICE_PROPER_NAMES[service])), (_popup ? React.createElement("script", {
           "dangerouslySetInnerHTML": {
-            __html: UglifyJS.minify("(function (window) {\n    window.addEventListener('load', function () {\n        var link_el = document.getElementById('" + service_id + "');\n        if (link_el) {\n            link_el.addEventListener('click', function (e) {\n                e.preventDefault();\n                window.open(link_el.href, 'intent', '" + WINDOW_OPTIONS + "');\n            });\n        }\n    });\n})(window);").code
+            __html: "(function (window) {\n    window.addEventListener('load', function () {\n        var link_el = document.getElementById('" + service_id + "');\n        if (link_el) {\n            link_el.addEventListener('click', function (e) {\n                e.preventDefault();\n                window.open(link_el.href, 'intent', '" + WINDOW_OPTIONS + "');\n            });\n        }\n    });\n})(window);"
           }
         }) : void 0));
       };
