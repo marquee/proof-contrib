@@ -75,6 +75,7 @@ function _renderInline (props/*: AssetPropsType */) {
       }
       file_content = fs.readFileSync(_path).toString();
       return React.createElement("script", {
+        "type": 'application/javascript',
         "dangerouslySetInnerHTML": {
           __html: file_content
         }
@@ -87,6 +88,7 @@ function _renderInline (props/*: AssetPropsType */) {
       }
       file_content = fs.readFileSync(_path).toString();
       return React.createElement("style", {
+        "type": 'text/css',
         "dangerouslySetInnerHTML": {
           __html: file_content
         }
